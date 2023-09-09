@@ -1,0 +1,86 @@
+{% load static %}
+{% include "ecom/customer_navbar.html" %}
+
+<!-- ==================== Breadcumb Start Here ==================== -->
+<section class="breadcumb py-120 bg-img" style="background-image: url({% static  'assets/images/thumbs/img4.jpg' %});">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="breadcumb__wrapper">
+                    <h1 class="breadcumb__title"> Channels</h1>
+                    <ul class="breadcumb__list">
+                        <li class="breadcumb__item"><a href="/" class="breadcumb__link"> <i class="las la-home"></i> Home</a> </li>
+                        <li class="breadcumb__item"> / </li>
+                        <li class="breadcumb__item"> <span class="breadcumb__item-text"> Channels </span> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==================== Breadcumb End Here ==================== -->
+
+
+
+<div class="grid-container" >
+    {% for item in products %}
+<div class="grid-elements">
+    <div class="thumbnail">
+        
+        <div>
+             <a href="" class="product-item__thumb-link">
+                                 <img src="{{ item.product_image.url }}" alt="">
+                              </a>
+        </div>
+    </div> 
+    <div class="subscriber ">
+        <div>
+            Subscribers<div>{{ item.Subscriber }}</div>
+        </div>
+    </div>
+    <div class="watch-hours">
+        <div>
+            watch hours {{item.Watchhour}}
+        </div>
+    </div>
+    <div class="monetisation">
+        <div>
+            {{item.Channelstatus}}
+        </div>
+    </div>
+    <div class="price">
+        Rs.{{ item.selling_price|stringformat:'d' }}
+    </div>
+    <div class="buy-add-button">
+        <!-- <a href="" type="submit" class="add-cart "> <button>
+            Buy Now
+        </button></a> -->
+        
+       <a href="{% url 'add-to-cart' item.id %}" type="submit" class="add-cart "> <button>
+            Add to cart
+        </button></a>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link" href="#">01</a></li>
+                          <li class="page-item "><a class="page-link" href="#">02</a></li>
+                          <li class="page-item"><a class="page-link" href="#">03</a></li>
+                          <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i> </a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================product category two section end here ==============================-->
+
+{% include "ecom/footer.html" %}

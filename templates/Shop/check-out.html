@@ -1,0 +1,272 @@
+{% load static %}
+{% include "ecom/customer_navbar.html" %}
+{% load widget_tweaks %}
+<!-- ==================== Breadcumb Start Here ==================== -->
+<section class="breadcumb py-120 bg-img" style="background-image: url(assets/images/thumbs/breadcumb-img.png);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="breadcumb__wrapper">
+                    <h1 class="breadcumb__title"> Check Out </h1>
+                    <ul class="breadcumb__list">
+                        <li class="breadcumb__item"><a href="index.html" class="breadcumb__link"> <i class="las la-home"></i> Home</a> </li>
+                        <li class="breadcumb__item"> / </li>
+                        <li class="breadcumb__item"> <span class="breadcumb__item-text"> Check Out  </span> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==================== Breadcumb End Here ==================== -->
+
+<!-- =================check out section start here ===================-->
+
+
+{%if product_in_cart%}
+<div class="checkout-section py-120">
+   
+    {% csrf_token %}
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-8">
+                <div class="billing-details">
+                    <h5 class="billing-details__title">Billing Details </h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="country" class="form--label"> Country / Region<span class="required">*</span></label>
+                                <select class="select" aria-label="Default select example" id="country">
+                                    <option selected>Choose Country</option>
+                                    
+                                    <option value="3">  India  </option>
+                                  </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="first-name" class="form--label">Name<span class="required">*</span></label>
+                                <input type="text" class="form--control" id="first-name" >
+                                
+                            </div>
+                        </div>
+                       
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="field5" class="form--label">Address<span class="required">*</span></label>
+                                {% render_field addressForm.Address id="field5" class="form--control field-long field-textarea" placeholder="Enter Your address" %}
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="city" class="form--label"> City </label>
+                                <input type="text" class="form--control" placeholder="Enter Your City" id="address" >
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="number" class="form--label">Postal code </label>
+                                <input type="number" class="form--control" placeholder="Ex 123" id="number">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="mobile" class="form--label">Phone Number</label>
+                                {% render_field addressForm.Mobile class="form--control field-long" placeholder="Mobile" %}
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="email" class="form--label">Email Address</label>
+                                {% render_field addressForm.Email class="form--control field-long" placeholder="Email" %}
+                            </div>
+                        </div>
+                       
+                      
+                        <div class="col-xl-6">
+                            <div class="billing-details__button d-flex flex-wrap justify-content-between align-items-center">
+                                <a href="product-category.html" class="btn btn--base pill billing-details__button-margin">CONTINUE SHOPPING</a>
+                                <a href="cart.html" class="color-style">Return to cart</a>
+                                <input type="submit" value="Proceed To Pay" class="btn btn--base pill billing-details__button-margin" />
+                            </div>
+                        </div>
+                </form>
+                    </div>
+
+                </div>
+            </div>
+            {%else%}
+<br><br>
+<h1 style="text-align:center; color:red;"> First Add Product In Cart </h1>
+<br><br><br><br><br><br><br><br><br><br>
+{%endif%}
+
+
+            <div class="col-lg-4">
+                <div class="your-order">
+                    <h6 class="your-order__title">Your Order</h6>
+                    <div class="order d-flex justify-content-between align-items-center">
+                        <ul class="order-title">
+                            <li class="order-title__one">Coco Kat Kitten</li>
+                            <li class="order-title__one">Milk X 02</li>
+                        </ul>
+                        <span class="order__number">$280.00</span>
+                    </div> 
+                    <div class="order d-flex justify-content-between align-items-center">
+                        <ul class="order-title">
+                            <li class="order-title__one">Coco Kat Kitten</li>
+                            <li class="order-title__one">Milk X 02</li>
+                        </ul>
+                        <span class="order__number">$280.00</span>
+                    </div>
+                    <div class="order d-flex justify-content-between align-items-center">
+                        <ul class="order-title">
+                            <li class="order-title__one"> Subtotal </li>
+                        </ul>
+                        <span class="order__number">$487.00</span>
+                    </div>
+                    <div class="order d-flex justify-content-between align-items-center">
+                        <ul class="order-title">
+                            <li class="order-title__one"> Shipping </li>
+                        </ul>
+                        <div class="order-radio">
+                              <div class="form--radio mb-2 style-two">
+                                <label class="form-check-label" for="flatrate">
+                                    Flat rate: $5.00
+                                </label>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flatrate" checked>
+                              </div>
+                              <div class="form--radio mb-2 style-two">
+                                <label class="form-check-label" for="shipping">
+                                    Free shipping
+                                </label>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="shipping" checked>
+                              </div>
+                              <div class="form--radio style-two">
+                                <label class="form-check-label" for="pickup">
+                                    Local pickup
+                                </label>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="pickup" checked>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="order d-flex justify-content-between align-items-center">
+                        <ul class="order-title">
+                            <li class="order-title__one"> Total </li>
+                        </ul>
+                        <span class="order__number">$487.00</span>
+                    </div>
+                    <div class="order-system">
+                        <div class="form--radio mb-2">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="transfer" checked>
+                            <label class="form-check-label" for="transfer">
+                                Pay on Gpay
+                            </label>
+                          </div>
+                         
+                          <p class="order-system__text mb-2">
+                            Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+                          </p>
+                          <div class="form--radio">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="delivery" checked>
+                            <label class="form-check-label" for="delivery">
+                                Cash on delivery
+                            </label>
+                          </div>
+                    </div>
+                    <p class="your-order__desc">
+                        Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our
+                    </p>
+                    <a href="index.html" class="your-order__desc-link"> privacy policy.</a>
+                    <div class="form--check">
+                        <input class="form-check-input" type="checkbox" value="" id="condition" checked>
+                        <label class="form-check-label" for="condition">
+                            I have read and agree to the website <a href="index.html" class="order-system__link"> terms and conditions </a>
+                        </label>
+                    </div>
+                    <div class="place-order">
+                        <a href="cart.html" class="btn btn--base pill"> ORDER NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =================checkout section end here===================== -->
+<!--============================feature section start here =======================-->
+<div class="feature-section bg-img py-60" style="background-image: url(assets/images/thumbs/feature/feature-img.png);">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="assets/images/thumbs/feature/f04.png" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            FREE SHIPPING
+                        </h5>
+                        <span class="feature-item__payment"> For All Order Over $99 </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="assets/images/thumbs/feature/f03.png" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            FRIENDLY SUPPORT
+                        </h5>
+                        <span class="feature-item__payment"> 24/7 Customer Support </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="assets/images/thumbs/feature/f02.png" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            SECURE PAYMENT
+                        </h5>
+                        <span class="feature-item__payment">100%  Secure Payment</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="assets/images/thumbs/feature/f01.png" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            SHIPPING & RETURN
+                        </h5>
+                        <span class="feature-item__payment"> within 30days For Refund </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ==========================feature setion end here ============================-->
+
+
+
+
+
+</body>
+
+<!-- Mirrored from template.viserlab.com/viserpet/demos/check-out.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 24 Jun 2023 10:27:06 GMT -->
+</html>
+{% include "ecom/footer.html" %}

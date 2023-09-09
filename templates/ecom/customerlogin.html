@@ -1,0 +1,186 @@
+{% load static %}
+{% load widget_tweaks %}
+{% include "ecom/customer_navbar.html" %}
+<!-- ==================== Breadcumb Start Here ==================== -->
+<section class="breadcumb py-120 bg-img" style="background-image: url({% static 'assets/images/thumbs/breadcumb-img.png' %});">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="breadcumb__wrapper">
+                    <h1 class="breadcumb__title"> Login</h1>
+                    <ul class="breadcumb__list">
+                        <li class="breadcumb__item"><a href="index.html" class="breadcumb__link"> <i class="las la-home"></i> Home</a> </li>
+                        <li class="breadcumb__item"> / </li>
+                        <li class="breadcumb__item"> <span class="breadcumb__item-text"> Login </span> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==================== Breadcumb End Here ==================== -->
+
+<!-- =============account section start here ====================-->
+<section class="account py-120">
+    <div class="account-inner">
+        <div class="container">
+            <div class="row align-items-center ">
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="account-thumb">
+                        <img src="{% static 'assets/images/thumbs/login-img.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="account-form">
+                        <div class="account-form__content mb-4">
+                            <h3 class="account-form__title mb-2"> Sign In Your Account </h3>
+                            <p class="account-form__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. ipsam labore dolore sunt laudantium aperiam.</p>
+                        </div>
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="username" class="form--label">Username</label>
+                                        <input type="text" class="form--control form-control" id="username" name="username" placeholder="Username" autocomplete="off" value="{{ form.username.value }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label for="password" class="form--label">Password</label>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form--control" id="password" name="password" placeholder="Password" value="{{ form.password.value }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="d-flex flex-wrap justify-content-between">
+                                    <div class="form--check form-group">
+                                        <input class="form-check-input" type="checkbox" value="" id="remember" name="remember">
+                                        <label class="form-check-label" for="remember">Remember me</label>
+                                    </div>
+                                    <!-- <a href="#" class="forgot-password text--base">Forgot Your Password?</a> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn--base w-100">Sign In</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="have-account text-center">
+                                    <p class="have-account__text"><a href="/customersignup" class="have-account__link text--base">Create Account?   </a>
+                                        <a href="/adminlogin" class="have-account__link text--base">Admin login?</a>  </p>
+                                       
+                                </div>
+                            </div>
+                        </form>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =======================account section end here ========================-->
+
+<!-- ========footer===== -->
+
+<!-- ==================== Footer Start Here ==================== -->
+<footer class="footer-area section-bg-light bg-img">
+    <div class="pb-60 pt-120">
+        <div class="container">
+            <div class="row justify-content-center gy-5">
+                <div class="col-xl-3 col-sm-6">
+                    <div class="footer-item">
+                        <div class="footer-item__logo">
+                            <a href="index.html"> <img src="{% static 'assets/images/logo/footer-logo02.png' %}" alt=""></a>
+                        </div>
+                        <p class="footer-item__desc"> Maecenas tempus tellus eget cdimentum rhoncus sem quam semper </p>
+                        <ul class="social-list">
+                            <li class="social-list__item"><a href="https://www.facebook.com/" class="social-list__link"><i class="fab fa-facebook-f"></i></a> </li>
+                            <li class="social-list__item"><a href="https://www.twitter.com/" class="social-list__link"> <i class="fab fa-twitter"></i></a></li>
+                            <li class="social-list__item"><a href="https://www.linkedin.com/" class="social-list__link"> <i class="fab fa-linkedin-in"></i></a></li>
+                            <li class="social-list__item"><a href="https://www.pinterest.com/" class="social-list__link"> <i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-1 d-xl-block d-none"></div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="footer-item">
+                        <h5 class="footer-item__title"> Pages </h5>
+                        <ul class="footer-menu">
+                            <li class="footer-menu__item"><a href="about.html" class="footer-menu__link"> About Us</a></li>
+                            <li class="footer-menu__item"><a href="faq.html" class="footer-menu__link"> Faq</a></li>
+                            <li class="footer-menu__item"><a href="cart.html" class="footer-menu__link">Shopping Cart </a></li>
+                            <li class="footer-menu__item"><a href="blog.html" class="footer-menu__link"> Blog</a></li>
+                            <li class="footer-menu__item"><a href="product-two-details.html" class="footer-menu__link"> Product Details</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="footer-item">
+                        <h5 class="footer-item__title"> Useful link </h5>
+                        <ul class="footer-menu">
+                            <li class="footer-menu__item"><a href="product-category.html" class="footer-menu__link"> Product Category </a></li>
+                            <li class="footer-menu__item"><a href="check-out.html" class="footer-menu__link">Checkout </a></li>
+                            <li class="footer-menu__item"><a href="login.html" class="footer-menu__link">Login </a></li>
+                            <li class="footer-menu__item"><a href="registration.html" class="footer-menu__link"> Registration </a></li>
+                            <li class="footer-menu__item"><a href="contact.html" class="footer-menu__link"> Contact Us </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-1 d-xl-block d-none"></div>
+                <div class="col-xl-3 col-sm-6">
+                    <div class="footer-item">
+                        <h5 class="footer-item__title">Subscribe now</h5>
+                        <div class="subscriber-form mb-3">
+                            <input type="text" class=" form--control style-two" placeholder="Email Address" aria-label="Recipient's username" >
+                            <button class="btn btn--base subscribe-button"><i class="fas fa-paper-plane"></i></button>
+                          </div>
+                          <p>Subscribe to our newsletter and get 10% off your first purchase..</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!-- Footer Top End-->
+  
+    <!-- bottom Footer -->
+    <div class="bottom-footer section-bg py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="bottom-footer__text">  Copyright &copy; 2023 . All rights reserved by Viserpet.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </footer>
+  <!-- ==================== Footer End Here ==================== -->
+  
+
+<!-- Jquery js -->
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.1.min.js"></script>
+<!-- Popper js -->
+<script src="assets/js/popper.min.js"></script>
+<!-- Bootstrap Js -->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- Slick js -->
+<script src="assets/js/slick.min.js"></script>
+<!-- countdown js -->
+<script src="assets/js/jquery.knob.js"></script>
+<script src="assets/js/jquery.throttle.js"></script>
+<script src="assets/js/jquery.classycountdown.min.js"></script>
+<!-- range js -->
+<script src="assets/js/jquery-ui.js"></script>
+<!-- magnific popup js -->
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+ <!-- main js -->
+ <script src="assets/js/main.js"></script>
+
+</body>
+
+<!-- Mirrored from template.viserlab.com/viserpet/demos/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 24 Jun 2023 10:27:21 GMT -->
+</html>

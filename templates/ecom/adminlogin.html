@@ -1,0 +1,92 @@
+{% load static %}
+{% load widget_tweaks %}
+{% include "ecom/customer_navbar.html" %}
+<!-- ==================== Breadcumb Start Here ==================== -->
+<section class="breadcumb py-120 bg-img" style="background-image: url({% static 'assets/images/thumbs/breadcumb-img.png' %});">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="breadcumb__wrapper">
+                    <h1 class="breadcumb__title"> Login</h1>
+                    <ul class="breadcumb__list">
+                        <li class="breadcumb__item"><a href="index.html" class="breadcumb__link"> <i class="las la-home"></i> Home</a> </li>
+                        <li class="breadcumb__item"> / </li>
+                        <li class="breadcumb__item"> <span class="breadcumb__item-text"> Login </span> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==================== Breadcumb End Here ==================== -->
+
+<!-- =============account section start here ====================-->
+<section class="account py-120">
+    <div class="account-inner">
+        <div class="container">
+            <div class="row align-items-center ">
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="account-thumb">
+                        <img src="{% static 'assets/images/thumbs/login-img.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="account-form">
+                        <div class="account-form__content mb-4">
+                            <h3 class="account-form__title mb-2"> Sign In Your Account </h3>
+                            <p class="account-form__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. ipsam labore dolore sunt laudantium aperiam.</p>
+                        </div>
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="username" class="form--label">Username</label>
+                                        <input type="text" class="form--control form-control" id="username" name="username" placeholder="Username" autocomplete="off" value="{{ form.username.value }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label for="password" class="form--label">Password</label>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form--control" id="password" name="password" placeholder="Password" value="{{ form.password.value }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="d-flex flex-wrap justify-content-between">
+                                    <div class="form--check form-group">
+                                        <input class="form-check-input" type="checkbox" value="" id="remember" name="remember">
+                                        <label class="form-check-label" for="remember">Remember me</label>
+                                    </div>
+                                    <!-- <a href="#" class="forgot-password text--base">Forgot Your Password?</a> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <button type="submit" value="Login" class="btn btn--base w-100">Sign In</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="have-account text-center">
+                                    <p class="have-account__text"><a href="/customersignup" class="have-account__link text--base">Create Account?   </a>
+                                        <a href="/adminlogin" class="have-account__link text--base">Admin login?</a>  </p>
+                                       
+                                </div>
+                            </div>
+                        </form>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =======================account section end here ========================-->
+
+</body>
+
+<!-- Mirrored from template.viserlab.com/viserpet/demos/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 24 Jun 2023 10:27:21 GMT -->
+</html>
+{% include "ecom/footer.html" %}

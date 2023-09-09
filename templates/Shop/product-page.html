@@ -1,0 +1,260 @@
+{% load static %}
+{% include "ecom/customer_navbar.html" %}
+
+<!-- ==================== Breadcumb Start Here ==================== -->
+<section class="breadcumb py-120 bg-img" style="background-image: url({% static 'assets/images/thumbs/breadcumb-img.png' %});">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="breadcumb__wrapper">
+                    <h1 class="breadcumb__title">  Category</h1>
+                    <ul class="breadcumb__list">
+                        <li class="breadcumb__item"><a href="index.html" class="breadcumb__link"> <i class="las la-home"></i> Home</a> </li>
+                        <li class="breadcumb__item"> / </li>
+                        <li class="breadcumb__item"> <span class="breadcumb__item-text"> Category </span> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==================== Breadcumb End Here ==================== -->
+
+<!-- ==================product category two section start here ==============================-->
+<div class="product-category-two py-120 ">
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-lg-12">
+               
+                <div class="row justify-content-center gy-4">
+                    
+                  <h4 class="mb-3">{{category_name}} Category</h4>
+                    <div class="product">
+                      <div class="row justify-content-center gy-4">  
+                        
+                        {% for item in products %}
+                     <div class="col-lg-3 col-md-4 col-sm-6 col-xsm-6">
+                      <div class="product-item text-center">
+                          <div class="product-item__thumb">
+                            <a href="{% url 'product_details' category_name item.name %}" class="product-item__thumb-link">
+                                 <img src="{{ item.product_image.url }}" alt="">
+                              </a>
+                              <!-- <button class="product-item__icon">
+                                  <span class="product-item__icon-style">
+                                    <i class="las la-heart"></i>
+                                  </span>
+                              </button> -->
+                              <div class="product-item__badge">
+                                  <span class="badge badge--base">Sale</span>
+                              </div>
+                          </div>
+                          <div class="product-item__content">
+                            <h5 class="product-item__title">
+                             <a href="{% url 'product_details' category_name item.name %}" class="product-item__title-link">
+                              {{ item.name }} 
+                             </a>
+                            </h5>
+                            {{ item.Detail }}
+                            {{item.Watchhour}}
+                            {{item.Channelstatus}}
+                             <h6 class="product-item__price">
+                                <span class="product-item__price-new">Rs.{{ item.price | stringformat:'d'}}</span> Rs.{{ item.selling_price | stringformat:'d' }}
+                             </h6>
+                             {% if item.quantity > 0 %}
+                             <a href="{% url 'add-to-cart' item.id  %}" class="btn btn--base pill btn--sm">Add to Cart </a>
+                             {% else %}
+                            <a href="" class="btn btn--danger pill btn--sm">Out of Stock</a>
+                            {% endif %}
+                          </div>
+                      </div>
+                  </div>
+        
+                  {% endfor %} 
+                      </div>
+                  </div>
+
+
+
+
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link" href="#">01</a></li>
+                          <li class="page-item "><a class="page-link" href="#">02</a></li>
+                          <li class="page-item"><a class="page-link" href="#">03</a></li>
+                          <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i> </a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================product category two section end here ==============================-->
+<!--============================feature section start here =======================-->
+<div class="feature-section bg-img py-60" style="background-image: url(assets/images/thumbs/feature/feature-img.png);">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="assets/images/thumbs/feature/f04.png" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            FREE SHIPPING
+                        </h5>
+                        <span class="feature-item__payment"> For All Order Over $99 </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="assets/images/thumbs/feature/f03.png" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            FRIENDLY SUPPORT
+                        </h5>
+                        <span class="feature-item__payment"> 24/7 Customer Support </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="assets/images/thumbs/feature/f02.png" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            SECURE PAYMENT
+                        </h5>
+                        <span class="feature-item__payment">100%  Secure Payment</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="assets/images/thumbs/feature/f01.png" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            SHIPPING 
+                        </h5>
+                        <span class="feature-item__payment"> within 1 hr </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ==========================feature setion end here ============================-->
+
+
+
+<!-- ========footer===== -->
+
+<!-- ==================== Footer Start Here ==================== -->
+<footer class="footer-area section-bg-light bg-img">
+    <div class="pb-60 pt-120">
+        <div class="container">
+            <div class="row justify-content-center gy-5">
+                <div class="col-xl-3 col-sm-6">
+                    <div class="footer-item">
+                        <div class="footer-item__logo">
+                            <a href="index.html"> <img src="assets/images/logo/footer-logo02.png" alt=""></a>
+                        </div>
+                        <p class="footer-item__desc"> Maecenas tempus tellus eget cdimentum rhoncus sem quam semper </p>
+                        <ul class="social-list">
+                            <li class="social-list__item"><a href="https://www.facebook.com/" class="social-list__link"><i class="fab fa-facebook-f"></i></a> </li>
+                            <li class="social-list__item"><a href="https://www.twitter.com/" class="social-list__link"> <i class="fab fa-twitter"></i></a></li>
+                            <li class="social-list__item"><a href="https://www.linkedin.com/" class="social-list__link"> <i class="fab fa-linkedin-in"></i></a></li>
+                            <li class="social-list__item"><a href="https://www.pinterest.com/" class="social-list__link"> <i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-1 d-xl-block d-none"></div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="footer-item">
+                        <h5 class="footer-item__title"> Pages </h5>
+                        <ul class="footer-menu">
+                            <li class="footer-menu__item"><a href="about.html" class="footer-menu__link"> About Us</a></li>
+                            <li class="footer-menu__item"><a href="faq.html" class="footer-menu__link"> Faq</a></li>
+                            <li class="footer-menu__item"><a href="cart.html" class="footer-menu__link">Shopping Cart </a></li>
+                            <li class="footer-menu__item"><a href="blog.html" class="footer-menu__link"> Blog</a></li>
+                            <li class="footer-menu__item"><a href="product-two-details.html" class="footer-menu__link"> Product Details</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-sm-6">
+                    <div class="footer-item">
+                        <h5 class="footer-item__title"> Useful link </h5>
+                        <ul class="footer-menu">
+                            <li class="footer-menu__item"><a href="product-category.html" class="footer-menu__link"> Product Category </a></li>
+                            <li class="footer-menu__item"><a href="check-out.html" class="footer-menu__link">Checkout </a></li>
+                            <li class="footer-menu__item"><a href="login.html" class="footer-menu__link">Login </a></li>
+                            <li class="footer-menu__item"><a href="registration.html" class="footer-menu__link"> Registration </a></li>
+                            <li class="footer-menu__item"><a href="contact.html" class="footer-menu__link"> Contact Us </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-1 d-xl-block d-none"></div>
+                <div class="col-xl-3 col-sm-6">
+                    <div class="footer-item">
+                        <h5 class="footer-item__title">Subscribe now</h5>
+                        <div class="subscriber-form mb-3">
+                            <input type="text" class=" form--control style-two" placeholder="Email Address" aria-label="Recipient's username" >
+                            <button class="btn btn--base subscribe-button"><i class="fas fa-paper-plane"></i></button>
+                          </div>
+                          <p>Subscribe to our newsletter and get 10% off your first purchase..</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!-- Footer Top End-->
+  
+    <!-- bottom Footer -->
+    <div class="bottom-footer section-bg py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="bottom-footer__text">  Copyright &copy; 2023 . All rights reserved by Viserpet.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </footer>
+  <!-- ==================== Footer End Here ==================== -->
+  
+
+<!-- Jquery js -->
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.1.min.js"></script>
+<!-- Popper js -->
+<script src="assets/js/popper.min.js"></script>
+<!-- Bootstrap Js -->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- Slick js -->
+<script src="assets/js/slick.min.js"></script>
+<!-- countdown js -->
+<script src="assets/js/jquery.knob.js"></script>
+<script src="assets/js/jquery.throttle.js"></script>
+<script src="assets/js/jquery.classycountdown.min.js"></script>
+<!-- range js -->
+<script src="assets/js/jquery-ui.js"></script>
+<!-- magnific popup js -->
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+ <!-- main js -->
+ <script src="assets/js/main.js"></script>
+
+</body>
+
+<!-- Mirrored from template.viserlab.com/viserpet/demos/product-category.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 24 Jun 2023 10:25:48 GMT -->
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %} 
+    <meta charset="utf-8">
+    <title>Sky Moon Aquarium and Pet Shop</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+ 
+
+    
+    <!-- Template Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png" />
+  <title>Eiser ecommerce</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+  <link rel="stylesheet" href="{% static 'vendors/linericon/style.css'%} " />
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" />
+  <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'vendors/lightbox/simpleLightbox.css' %}" />
+  <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}" />
+  <link rel="stylesheet" href="{% static 'vendors/animate-css/animate. css' %}" />
+  <link rel="stylesheet" href="{% static 'vendors/jquery-ui/jquery-ui.css' %}" />
+  <!-- main css -->
+ 
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+</head>
+
+<body>
+ 
+
+
+ 
+
+  <!--================ Feature Product Area =================-->
+  <section class="feature_product_area section_gap_bottom_custom ">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="main_title mt-40">
+            <h2><span> products</span></h2>
+            <p>Bring called seed first of third give itself now ment</p>
+          </div>
+        </div>
+      </div>
+      {%if products%}
+      <h3 style="text-align:center; color:#3E454C;">{{word}}</h3>
+      <div class="row">
+
+        {% for p in products %}
+        <div class="col-lg-3 col-md-6">
+          <div class="single-product">
+            <div class="product-img">
+              <img class="img-fluid w-100" src="{% static p.product_image.url %}" alt="" />
+              <div class="p_icon">
+                <a href="#">
+                  <i class="ti-eye"></i>
+                </a>
+                <a href="#">
+                  <i class="ti-heart"></i>
+                </a>
+                <a href="{% url 'add-to-cart' p.id  %}">
+                  <i class="ti-shopping-cart"></i>
+                </a>
+              </div>
+            </div>
+            <div class="product-btm">
+              <a href="#" class="d-block">
+                <h4>{{p.name}}</h4>
+                <h6>{{p.description}}</h6>
+              </a>
+              <div class="mt-3">
+                <span class="mr-4">Rs.{{p.price}}</span>
+                <!-- <del>$35.00</del> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:"4" %}
+    </div>
+    <div class="row">
+          <br><br><br><br><br>
+{% endif %}
+
+  {% endfor %}
+      </div>
+    </div>
+</section><div class="grid-container" >
+  {% for item in Latest_products %}
+<div class="grid-elements">
+  <div class="thumbnail">
+    <a href="{% url 'product_details' category_name item.name %}" class="product-item__thumb-link">
+      <div>
+          <img src="{{ item.product_image.url }}" alt="">
+      </div>
+    </a>
+  </div>
+  <div class="subscriber">
+      <div>
+          Subscribers<div>{{ item.Detail }}</div>
+      </div>
+  </div>
+  <div class="watch-hours">
+      <div>
+          watch hours {{item.Watchhour}}
+      </div>
+  </div>
+  <div class="monetisation">
+      <div>
+          {{item.Channelstatus}}
+      </div>
+  </div>
+  <div class="price">
+      Rs.{{ item.selling_price|stringformat:'d' }}
+  </div>
+  <div class="buy-add-button">
+      <!-- <a href="{% url 'add-to-cart' item.id %}" type="submit" class="add-cart "> <button>
+          Buy Now
+      </button></a> -->
+      
+     <a href="{% url 'add-to-cart' item.id %}" type="submit" class="add-cart "> <button>
+          Add to cart
+      </button></a>
+  </div>
+</div>
+{% endfor %}
+</div>
+    <!-- {%else%}
+    <h3 style="text-align:center; color:#3E454C;">No Search Found</h3>
+    {%endif%} 
+  -->
+  <!--================ End Feature Product Area =================-->
+
+
+
+  
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/stellar.js"></script>
+  <script src="vendors/lightbox/simpleLightbox.min.js"></script>
+  <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
+  <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
+  <script src="vendors/isotope/isotope-min.js"></script>
+  <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+  <script src="js/jquery.ajaxchimp.min.js"></script>
+  <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
+  <script src="vendors/counter-up/jquery.counterup.js"></script>
+  <script src="js/mail-script.js"></script>
+  <script src="js/theme.js"></script>
+</body>
+
+</html>

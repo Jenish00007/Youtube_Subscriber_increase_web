@@ -1,0 +1,256 @@
+{% load static %}
+{% include "ecom/customer_navbar.html" %}
+<script>
+    function incrementQuantity(productId) {
+        const quantityInput = document.getElementById(`quantity_${productId}`);
+        const currentValue = parseInt(quantityInput.value);
+        quantityInput.value = currentValue + 1;
+    }
+
+    function decrementQuantity(productId) {
+        const quantityInput = document.getElementById(`quantity_${productId}`);
+        const currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+            quantityInput.value = currentValue - 1;
+        }
+    }
+</script>
+
+<!-- ==================== Breadcumb Start Here ==================== -->
+<section class="breadcumb py-120 bg-img" style="background-image: url({% static 'assets/images/thumbs/img4.jpg' %});">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="breadcumb__wrapper">
+                    <h1 class="breadcumb__title"> {{products}} Details</h1>
+                    <ul class="breadcumb__list">
+                        <li class="breadcumb__item"><a href="index.html" class="breadcumb__link"> <i class="las la-home"></i> Home</a> </li>
+                        <li class="breadcumb__item"> / </li>
+                        <li class="breadcumb__item"> <span class="breadcumb__item-text">  {{products}} </span> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==================== Breadcumb End Here ==================== -->
+
+<!-- ======================product details two section start here ====================-->
+<div class="product-details-section py-120">
+    <div class="container">
+        <div class="row align-items-center gy-4">
+
+            <div class="col-lg-7 pe-lg-5">
+              <div class="row align-items-center">
+
+                <div class="col-lg-9 order-lg-2">
+                    <div class="product-details__thumb">
+                      <a href="" class="product-details__image">
+                         <img src="{{ products.product_image.url }}" alt="">
+                      </a>
+                     
+                    </div>
+                </div>
+
+                
+
+              </div>
+            </div>
+           
+            <div class="col-lg-5">
+              <div class="product-info">
+                 <h3 class="product-info__title">
+                  {{products}}
+                 </h3>
+
+                 
+              
+                      
+                    
+                   
+                  
+               
+                 <h6 class="product-info__price">
+                     <span class="product-info__price-new">Rs.{{products.price}}</span> Rs.{{products.selling_price}}
+                 </h6>
+                 <p class="product-info__desc"></p>
+                 <div class="product-style">
+                    <span class="product-style__title">Sub :</span>
+                   <span class="product-style__size">{{products.Subscriber}}</span>
+                 </div>
+
+                 <div class="product-style">
+                  <span class="product-style__title">Watch hour:</span>
+                 <span class="product-style__size">  {{products.Watchhour}}</span>
+               </div>
+               <div class="product-style">
+                <span class="product-style__title">Status:</span>
+               <span class="product-style__size">  {{products.Channelstatus}}</span>
+             </div>
+             <div class="product-style">
+              <span class="product-style__title">Description:</span>
+             <span class="product-style__size">   {{products.description}}</span>
+           </div>
+                 <!-- <div class="product-variation product-style">
+                    <span class="product-style__title">Color :</span>
+                    <div class="product-color__variant-wrapper">
+                        <ul class="color-variant-list">
+                          <li class="color-variant-list__item one">
+                               <span class="color"></span>
+                          </li>
+                          <li class="color-variant-list__item two">
+                               <span class="color"></span>
+                          </li>
+                          <li class="color-variant-list__item three">
+                               <span class="color"></span>
+                          </li>
+                          <li class="color-variant-list__item four">
+                               <span class="color"></span>
+                          </li>
+                        </ul>
+                    </div>
+                 </div> -->
+                 <!-- <div class="product-style">
+                  <span class="product-style__title">vendor :</span>
+                 <span class="product-style__size">Pet Point</span>
+                 </div> -->
+                 <!-- <div class="product-style">
+                  <span class="product-style__title">Type :</span>
+                 <span class="product-style__size">Dog Food</span>
+                 </div> -->
+                 {% if products.quantity > 0 %}
+                 <div class="qty-cart d-flex product-style">
+                      <!-- <span class="product-style__title">QTY :</span> -->
+                          <!-- <div class="product-qty">
+                             <div value="{{ p.id }}" class="product-qty">
+                                <button style="width:30px;height:30px;" class="input-group-text btn--base text-light" id="btnMinus" onclick="decrementQuantity('{{ p.id }}')"><i class="fa fa-minus"></i></button>
+                                   <input style="width:30px;height:30px;" type="number" class="product-qty__value" name="quantity" value="1" id="quantity_{{ p.id }}">
+
+                                <button style="width:30px;height:30px;" class=" input-group-text btn--base text-light" id="btnPlus" onclick="incrementQuantity('{{ p.id }}')"><i class="fa fa-plus"></i></button>
+                 
+                              </div>
+                             </div> -->
+
+                            
+                  </div>
+                  <div class="product-info__button">
+                    <a href="{% url 'add-to-cart' products.id %}" class="btn btn-sm btn--base pill product-info__link">Add To Cart</a>
+                  </div>
+                  {% else %}
+                  <div class="product-info__button">
+                     <a href="" class="btn btn--danger pill product-info__link">Out Of Stock</a>
+                  {% endif %}
+
+                </div>
+                    <!-- <a href="{% url 'fav' products.id %}" class="product-info__heart product-info__link"><i class="fas fa-heart"></i></a> -->
+                    <!-- <a href="{% url 'add-to-cart' products.id  %}" class="product-info__cart product-info__link"><i class="fas fa-shopping-cart"></i></a> -->
+                
+                 <!-- <div class="product-info__share">
+                    <h6 class="product-info__share-text">Share :</h6>
+                    <ul class="social-list style-four">
+                      <li class="social-list__item"><a href="https://www.facebook.com/" class="social-list__link"><i class="fab fa-facebook-f"></i></a> </li>
+                      <li class="social-list__item"><a href="https://www.twitter.com/" class="social-list__link"> <i class="fab fa-twitter"></i></a></li>
+                      <li class="social-list__item"><a href="https://www.linkedin.com/" class="social-list__link"> <i class="fab fa-linkedin-in"></i></a></li>
+                      <li class="social-list__item"><a href="https://www.pinterest.com/" class="social-list__link"> <i class="fab fa-pinterest-p"></i></a></li>
+                    </ul>
+                 </div> -->
+
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======================product details two section end here ====================-->
+
+<!-- =====================tab section start here ========================-->
+<div class="tab-section pb-20">
+   <div class="container">
+    
+  
+    
+   </div>
+</div>
+
+<!-- ==============tab section end here ==============-->
+
+
+
+
+
+
+<!--============================feature section start here =======================-->
+<div class="feature-section bg-img py-60" style="background-image: url(assets/images/thumbs/feature/feature-img.png);">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="assets/images/thumbs/feature/f04.png" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <!-- <h5 class="feature-item__title">
+                            FREE SHIPPING
+                        </h5> -->
+                        <!-- <span class="feature-item__payment"> For All Order Over $99 </span> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="assets/images/thumbs/feature/f03.png" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            FRIENDLY SUPPORT
+                        </h5>
+                        <span class="feature-item__payment"> 24/7 Customer Support </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="assets/images/thumbs/feature/f02.png" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            SECURE PAYMENT
+                        </h5>
+                        <span class="feature-item__payment">100%  Secure Payment</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="assets/images/thumbs/feature/f01.png" alt="">
+                    </div>
+                     <div class="feature-item__info">
+                     <!--   <h5 class="feature-item__title">
+                            SHIPPING
+                        </h5>
+                        <span class="feature-item__payment"> within 1 hr</span>-->
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ==========================feature setion end here ============================-->
+
+
+
+<!-- ========footer===== -->
+
+
+
+
+</body>
+
+<!-- Mirrored from template.viserlab.com/viserpet/demos/product-two-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 24 Jun 2023 10:27:06 GMT -->
+</html>
+{% include "ecom/footer.html" %}

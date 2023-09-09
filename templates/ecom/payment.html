@@ -1,0 +1,111 @@
+{% load static %}
+{% include "ecom/customer_navbar.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<head>
+
+</head>
+<style media="screen">
+
+.panel-title {display: inline;font-weight: bold;}
+.checkbox.pull-right { margin: 0; }
+.pl-ziro { padding-left: 0px; }
+</style>
+<br><br>
+
+<br><br>
+
+
+{{name}}
+  
+
+<div class="container col-sm-10 " style="box-shadow: 5px 5px  5px 5px;color: rgb(24, 224, 64); ">
+    <div class="row">
+       
+        <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top: 20px;">
+            <div class="panel panel-default">
+
+                <center><div class="panel-heading">
+                    <h3 class="panel-title">
+                        Payment Details
+                    </h3>
+                   
+                </div></center>
+
+                <div class="panel-body">
+                    <center>   <h5 class="panel-title">
+                        Pay with Gpay
+                    </h5></center>
+
+                    <div class="product-item__thumb">
+                        <a href="" class="product-item__thumb-link">
+                           <img src="{% static 'assets/images/thumbs/qr-code.jpeg' %}" alt="">
+                        </a>
+                    </div>
+
+                    <div>
+                        <center class="active"><a href="#"><span class="badge pull-right"></span> Final Payment : Rs.{{grand_total}}</a>
+                        </center>
+                    </div>
+                    <br>
+                    
+                    <form role="form" method="post" action="/payment-success/">
+                        {% csrf_token %}
+                 
+                        <div class="col-xs-12 col-md-12">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="name" name="{{ paymentForm.Name.html_name }}" placeholder="Enter Your Name" value="{{ paymentForm.Name.value }}" required>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                </div>
+                                {% for error in paymentForm.Name.errors %}
+                                    <p class="text-danger">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-12 col-md-12 pull-right">
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="phoneNumber" name="{{ paymentForm.Mobile.html_name }}" placeholder="Enter Your Phone Number" value="{{ paymentForm.Mobile.value }}" required>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                                </div>
+                                {% for error in paymentForm.Mobile.errors %}
+                                    <p class="text-danger">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="transactionNumber">Enter Transaction Number</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="transactionNumber" name="Transcation_id" placeholder="xxxx xxxx xxxx xxxx" required value="{{ paymentForm.Transcation_id.value }}">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            </div>
+                            {% for error in paymentForm.Transcation_id.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        
+                        <br/>
+                        
+                        <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+                        <br><br>
+
+                    </form>
+                    
+                </div>
+            </div>
+           
+        </div>
+        
+    </div>
+    
+</div>
+
+<br><br><br><br>
+
+{% endblock content %}
+{% include "ecom/footer.html" %}

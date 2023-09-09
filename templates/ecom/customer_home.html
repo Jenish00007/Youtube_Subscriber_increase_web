@@ -1,0 +1,529 @@
+{% load static %}
+{% include "ecom/customer_navbar.html" %}
+<!--========================== Banner Section Start ==========================-->
+<section class="banner-section pt-60 pb-60">
+  <div class="container">
+        
+          
+            <div class="banner">
+                <div class="banner-content">
+                    <h4 class="banner-content__subtitle">Best Product</h4>
+                    <h2 class="banner-content__title">DOG FOOD</h2>
+                    <p class="banner-content__desc">
+                        Wusmod tempor incididu nt ut labore et dolore magna aliqua.
+                    </p>
+                    <div class="banner-content__buttons">
+                        <a href="" class="btn btn--base pill">SHOP NOW</a>
+                        <div class="button-shape">
+                            <img src="{% static 'assets/images/shapes/button-shape.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-thumb">
+                    <img src="{% static 'assets/images/thumbs/banner-img.png' %}" alt="">
+                    <div class="banner-thumb__shape">
+                        <img src="{% static 'assets/images/shapes/banner-shape.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+         
+    
+  </div>
+</section>
+<!--========================== Banner Section End ==========================-->
+
+
+
+
+
+
+<!--========================== category section start here ======================-->
+<div class="new-arrival-section py-60">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="section-heading">
+                  <h4 class="section-heading__subtitle">Category</h4>
+                  <h3 class="section-heading__title style-two">Special Category<span class="section-heading__bars"></span></h3>
+               </div>
+          </div>
+       </div>
+          <div class="col-lg-12">
+              <div class="filter">
+
+                  <button type="button" data-filter="all" class="mixitup-control-active">All</button>
+                  {% for item in category %}
+                  <a href="{% url 'collections' item.name %}">
+                  <button type="button" data-filter=".cat">{{item.name}}</button></a>
+                  {% endfor %} 
+                 
+               </div>
+          </div>
+
+          <div class="product">
+              <div class="row justify-content-center gy-4">  
+                
+                {% for item in Latest_products %}
+               
+             <div class="col-lg-3 col-md-4 col-sm-6 col-xsm-6">
+              <div class="product-item text-center">
+                  <div class="product-item__thumb">
+                      <a href="{% url 'product_details' item.category.name item.name %}" class="product-item__thumb-link">
+                         <img src="{% static item.product_image.url %}" alt="">
+                      </a>
+                      <button class="product-item__icon">
+                          <span class="product-item__icon-style">
+                            <!-- <a href="{% url 'fav' item.id %}">
+                            <i  class="las la-heart"></i></a> -->
+                          </span>
+                      </button>
+                      <div class="product-item__badge">
+                          <span class="badge badge--base">Sale</span>
+                      </div>
+                  </div>
+                  <div class="product-item__content">
+                    <h5 class="product-item__title">
+                     <a href="{% url 'collections' item.name %}" class="product-item__title-link">
+                      {{ item.name }} 
+                     </a>
+                    </h5>
+                    <ul class="product-info__rating justify-content-center align-items-center">
+                      <li class="product-info__rating-item">
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li class="product-info__rating-item">
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li class="product-info__rating-item">
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li class="product-info__rating-item">
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li class="product-info__rating-item">
+                        <i class="fas fa-star-half-alt"></i>
+                      </li>
+                      <li class="product-info__number">
+                        4.8
+                      </li>
+                    </ul>
+                     <h6 class="product-item__price">
+                        <span class="product-item__price-new">Rs.{{ item.price | stringformat:'d'}}</span> Rs.{{ item.selling_price | stringformat:'d' }}
+                     </h6>
+                     {% if item.quantity > 0 %}
+                     <a href="{% url 'add-to-cart' item.id  %}" class="btn btn--base pill btn--sm">Add to Cart </a>
+                     {% else %}
+                    <a href="{% url 'add-to-cart' item.id  %}" class="btn btn--danger pill btn--sm">Out of Stock</a>
+                    {% endif %}
+                  </div>
+              </div>
+          </div>
+
+          {% endfor %} 
+              </div>
+          </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!--==============================offer-section start  here=============================-->
+<div class="offer-section pt-60 pb-60">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-6">
+                <a href="" class="offer">
+                    <img src="{% static 'assets/images/thumbs/offer-img.png' %}" alt="">
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <a href="" class="offer">
+                    <img src="{% static 'assets/images/thumbs/offer-img03.png' %}" alt="">
+                 </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--======================product sections start here =================-->
+<div class="product-section py-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                   <h4 class="section-heading__subtitle">Special products</h4>
+                   <h3 class="section-heading__title style-two">Trending Products<span class="section-heading__bars"></span></h3>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center gy-4">
+
+
+            {% for item in Trending_products %}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xsm-6">
+                <div class="product-item text-center">
+                    <div class="product-item__thumb">
+                        <a href="product-two-details.html" class="product-item__thumb-link">
+                          <img src="{{ item.product_image.url }}" alt="">
+                        </a>
+                        <button class="product-item__icon">
+                             <!-- <span class="product-item__icon-style">
+                                <a href="{% url 'add-to-cart' item.id  %}">
+                              <i class="las la-heart"></i></a>
+                            </span> -->
+                        </button>
+                        <div class="product-item__badge">
+                            <span class="badge badge--base">Sale</span>
+                        </div>
+                    </div>
+                    <div class="product-item__content">
+                      <h5 class="product-item__title">
+                       <a href="product-two-details.html" class="product-item__title-link">
+                        {{ item.name }} 
+                       </a>
+                      </h5>
+                      <ul class="product-info__rating justify-content-center align-items-center">
+                        <li class="product-info__rating-item">
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="product-info__rating-item">
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="product-info__rating-item">
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="product-info__rating-item">
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="product-info__rating-item">
+                          <i class="fas fa-star-half-alt"></i>
+                        </li>
+                        <li class="product-info__number">
+                          4.8
+                        </li>
+                      </ul>
+                       <h6 class="product-item__price">
+                          <span class="product-item__price-new">Rs.{{ item.price | stringformat:'d'}}</span> Rs.{{ item.selling_price | stringformat:'d' }}
+                       </h6>
+                       {% if item.quantity > 0 %}
+                     <a href="{% url 'add-to-cart' item.id  %}" class="btn btn--base pill btn--sm">Add to Cart </a>
+                     {% else %}
+                    <a href="{% url 'add-to-cart' item.id  %}" class="btn btn--danger pill btn--sm">Out of Stock</a>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %} 
+
+            
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+<!-- ====================deal section start here ====================-->
+<div class="best-deals-section py-60">
+        <div class="container-fluid p-0">
+        <div class="row gx-0 justify-content-center flex-wrap-reverse">
+                <div class="col-xl-4">
+                   <div class="deal-thumb">
+                      <img src="{% static 'assets/images/thumbs/deal-img.png' %}" alt="">
+                  </div>
+                </div>
+                <div class="col-xl-8">
+                <div class="deal-counter py-120" style="background-image: url({% static 'assets/images/thumbs/deal-product-img.png' %});">
+                    <div class="section-heading style-three">
+                        <h4 class="section-heading__subtitle">Best products</h4>
+                        <h3 class="section-heading__title">Best Deals Of T he Week!</h3>
+                     </div>
+                     <div id="countdown-container"></div>
+                     <div class="deal-counter__footer text-center">
+                        <p class="deal-counter__title mb-3">Dummy Product Name</p>
+                        <h6 class="deal-counter__price">
+                            <span class="deal-counter__price-new">$620</span> $520
+                        </h6>
+                    </div>
+                    <div class="text-center">
+                        <a href="" class="btn btn--base pill">SHOP NOW</a>
+                    </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--===================== deal section end Here ====================-->
+<!--==========================new arrival section start here======================-->
+<div class="new-arrival-section py-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h4 class="section-heading__subtitle">Special products</h4>
+                    <h3 class="section-heading__title style-two">New Arrivals product<span class="section-heading__bars"></span></h3>
+                 </div>
+            </div>
+         </div>
+            <!-- <div class="col-lg-12">
+                <div class="filter">
+                    <button type="button" data-filter="all" class="mixitup-control-active">All</button>
+                    <button type="button" data-filter=".cat">Cat</button>
+                    <button type="button" data-filter=".dog">Dog</button>
+                    <button type="button" data-filter=".small-pet">Small Pet</button>
+                 </div>
+            </div> -->
+
+            <div class="product">
+                <div class="row justify-content-center gy-4">  
+                  
+                  {% for item in Latest_products %}
+               <div class="col-lg-3 col-md-4 col-sm-6 col-xsm-6">
+                <div class="product-item text-center">
+                    <div class="product-item__thumb">
+                        <a href="" class="product-item__thumb-link">
+                           <img src="{% static item.product_image.url %}" alt="">
+                        </a>
+                        <button class="product-item__icon">
+                            <!-- <span class="product-item__icon-style">
+                              <i class="las la-heart"></i>
+                            </span> -->
+                        </button>
+                        <div class="product-item__badge">
+                            <span class="badge badge--base">Sale</span>
+                        </div>
+                    </div>
+                    <div class="product-item__content">
+                      <h5 class="product-item__title">
+                       <a href="product-two-details.html" class="product-item__title-link">
+                        {{ item.name }} 
+                       </a>
+                      </h5>
+                      <ul class="product-info__rating justify-content-center align-items-center">
+                        <li class="product-info__rating-item">
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="product-info__rating-item">
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="product-info__rating-item">
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="product-info__rating-item">
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="product-info__rating-item">
+                          <i class="fas fa-star-half-alt"></i>
+                        </li>
+                        <li class="product-info__number">
+                          4.8
+                        </li>
+                      </ul>
+                       <h6 class="product-item__price">
+                          <span class="product-item__price-new">Rs.{{ item.price | stringformat:'d'}}</span> Rs.{{ item.selling_price | stringformat:'d' }}
+                       </h6>
+                       {% if item.quantity > 0 %}
+                       <a href="{% url 'add-to-cart' item.id  %}" class="btn btn--base pill btn--sm">Add to Cart </a>
+                       {% else %}
+                      <a href="{% url 'add-to-cart' item.id  %}" class="btn btn--danger pill btn--sm">Out of Stock</a>
+                      {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %} 
+                </div>
+            </div>
+    </div>
+</div>
+<!-- ==================new offer section start here==================-->
+<div class="new-offer-section py-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="" class="new-offer-content">
+                    <img src="{% static 'assets/images/thumbs/new-offer-img.png' %}" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ===================new offer section end here =====================-->
+
+<!--========================== Coverage Section Start ==========================-->
+<!-- <div class="client pb-120 pt-60">
+    <div class="container">
+        <div class="client-logos client-slider">
+            <img src="{% static 'assets/images/2__brands/client-01.png' %}" alt="">
+            <img src="{% static 'assets/images/2__brands/client-04.png' %}" alt="">
+            <img src="{% static 'assets/images/2__brands/client-03.png' %}" alt="">
+            <img src="{% static 'assets/images/2__brands/client-04.png' %}" alt="">
+            <img src="{% static 'assets/images/2__brands/client-01.png' %}" alt="">
+            <img src="{% static 'assets/images/2__brands/client-04.png' %}" alt="">
+            <img src="{% static 'assets/images/2__brands/client-03.png' %}" alt="">
+        </div>
+    </div>
+</div> -->
+<!--========================== Coverage Section End ==========================-->
+<!-- ==================== Blog Start Here ==================== -->
+<section class="blog py-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2 class="section-heading__subtitle">Blog Post</h2>
+                    <h3 class="section-heading__title style-two"> Latest news post <span class="section-heading__bars"></span> </h3>
+                </div>
+            </div>
+        </div>
+        <div class="row gy-4 justify-content-center align-items-center">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xsm-6">
+                <div class="blog-item">
+                    <div class="blog-item__thumb">
+                        <a href="blog-details.html" class="blog-item__thumb-link">
+                            <img src="{% static 'assets/images/thumbs/blog/blog03.png' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-item__date">
+                        <span class="blog-item__month">18</span>
+                        <span class="blog-item__month">May</span>
+                    </div>
+                    <div class="blog-item__content">
+                        <h4 class="blog-item__title"><a href="blog-details.html" class="blog-item__title-link">Amet Occumsan Fringilla Molestie Urna Hendrerit  </a></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xsm-6">
+                <div class="blog-item">
+                    <div class="blog-item__thumb">
+                        <a href="blog-details.html" class="blog-item__thumb-link">
+                            <img src="{% static 'assets/images/thumbs/blog/blog01.png' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-item__date">
+                        <span class="blog-item__month">22</span>
+                        <span class="blog-item__month">May</span>
+                    </div>
+                    <div class="blog-item__content">
+                        <h4 class="blog-item__title"><a href="blog-details.html" class="blog-item__title-link">Maecenas Sed Facilisis Ipsum. Duis Scelerisque Mi Magna </a></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xsm-6 d-block d-lg-none">
+                <div class="blog-item">
+                    <div class="blog-item__thumb">
+                        <a href="blog-details.html" class="blog-item__thumb-link">
+                            <img src="{% static 'assets/images/thumbs/blog/blog01.png' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-item__date">
+                        <span class="blog-item__month">22</span>
+                        <span class="blog-item__month">May</span>
+                    </div>
+                    <div class="blog-item__content">
+                        <h4 class="blog-item__title"><a href="blog-details.html" class="blog-item__title-link">Maecenas Sed Facilisis Ipsum. Duis Scelerisque Mi Magna </a></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xsm-6">
+                <div class="blog-item">
+                    <div class="blog-item__thumb">
+                        <a href="blog-details.html" class="blog-item__thumb-link">
+                            <img src="{% static 'assets/images/thumbs/blog/blog02.png' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-item__date">
+                        <span class="blog-item__month">29</span>
+                        <span class="blog-item__month">May</span>
+                    </div>
+                    <div class="blog-item__content">
+                        <h4 class="blog-item__title"><a href="blog-details.html" class="blog-item__title-link">Wenean Vitae Porttitor Ante Tempor Posuere Nisl.  </a></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==================== Blog End Here ==================== -->
+<!--============================feature section start here =======================-->
+<div class="feature-section bg-img py-60" style="background-image: url(assets/images/thumbs/feature/feature-img.png);">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="{% static 'assets/images/thumbs/feature/f04.png' %}" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            FREE SHIPPING
+                        </h5>
+                        <span class="feature-item__payment"> For All Order Over $99 </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="{% static 'assets/images/thumbs/feature/f03.png' %}" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            FRIENDLY SUPPORT
+                        </h5>
+                        <span class="feature-item__payment"> 24/7 Customer Support </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="{% static 'assets/images/thumbs/feature/f02.png' %}" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            SECURE PAYMENT
+                        </h5>
+                        <span class="feature-item__payment">100%  Secure Payment</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xxsm-6">
+                <div class="feature-item">
+                    <div class="feature-item__thumb">
+                        <img src="{% static 'assets/images/thumbs/feature/f01.png' %}" alt="">
+                    </div>
+                    <div class="feature-item__info">
+                        <h5 class="feature-item__title">
+                            SHIPPING 
+                        </h5>
+                        <span class="feature-item__payment"> within 1 hr</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ==========================feature setion end here ============================-->
+
+
+
+
+ <script>
+    // mixitup 
+   var mixer = mixitup('.product');
+</script>
+</body>
+
+<!-- Mirrored from template.viserlab.com/viserpet/demos/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 24 Jun 2023 10:26:36 GMT -->
+</html>
+{% include "ecom/footer.html" %}

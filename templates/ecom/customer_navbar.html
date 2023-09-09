@@ -1,0 +1,175 @@
+<!-- meta tags and other links -->
+<!-- Header -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from template.viserlab.com/viserpet/demos/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 24 Jun 2023 10:26:17 GMT -->
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title>Youtube</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/logo/favicon.png' %}">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <!-- Slick -->
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <!-- line awesome -->
+    <link rel="stylesheet" href="{% static 'assets/css/line-awesome.min.css' %}">
+    <!-- countdown css link-->
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.classycountdown.min.css' %}">
+    <!-- range css -->
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}">
+    <!-- magnific css link -->
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+</head>
+<body>
+    
+<!--==================== Preloader Start ====================-->
+
+<!--==================== Preloader End ====================-->
+
+<!--==================== Overlay Start ====================-->
+<div class="body-overlay"></div>
+<!--==================== Overlay End ====================-->
+
+<!--==================== Sidebar Overlay End ====================-->
+<div class="sidebar-overlay"></div>
+<!--==================== Sidebar Overlay End ====================-->
+
+<!-- ==================== Scroll to Top End Here ==================== -->
+<a class="scroll-top"><i class="fas fa-angle-double-up"></i></a>
+<!-- ==================== Scroll to Top End Here ==================== -->
+
+
+<!-- ==================== Bottom Header End Here ==================== -->
+<header class="header" id="header">
+  <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+          <button class="navbar-toggler header-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span id="hiddenNav"><i class="las la-bars"></i></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav nav-menu me-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">  <span class="nav-item__icon"></span></a>
+                      
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="aboutus">About</a>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link" href="collections" role="button"  aria-expanded="false">Buy Channels<span class="nav-item__icon"></span></a>
+                   
+                    </li> 
+                      <!-- <li class="nav-item dropdown">
+                      <a class="nav-link" href="#Sell_channel" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sell Channels<span class="nav-item__icon"></span></a>
+                     
+                      </li>  -->
+                      <!-- <li class="nav-item dropdown">
+                        <a class="nav-link" href="#Monetization_Services" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Buy Watch Hour <span class="nav-item__icon"></span></a>
+                       
+                        </li>  -->
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                  <li class=" nav-item">
+                    <!-- <div class="toggle-search-box d-none d-lg-block">
+                        <button type="button" class="" data-bs-toggle="modal" data-bs-target="#search-box" data-bs-whatever="@mdo"><i class="las la-search"></i></button>
+                    </div> -->
+                  </li>
+              </ul>
+          </div>
+          <div class="header-info">
+            <div class="toggle-search-box d-lg-none d-block">
+                <button type="button" class="" data-bs-toggle="modal" data-bs-target="#search-box" data-bs-whatever="@mdo"><i class="las la-search"></i></button>
+            </div>
+            <!-- <div class="header-info__wishlist">
+               <a href="{% url 'favviewpage' %}" class="header-info__link"><i class="far fa-heart"></i></a>
+            </div> -->
+            <div class="header-info__cart">
+                   <a href="{% url 'cart'%}" class="header-info__link"><i class="fas fa-shopping-cart"></i></a>
+                   <span class="header-info__cart-quantity">{{product_count_in_cart}}</span>
+            </div>
+            {% if customer.profile_pic %}
+            
+            <div class="header-info__user">
+                <a href="/my-order">
+                <img src="{{ customer.profile_pic.url }}" class="rounded-circle" style="width: 30px;margin-left:10px;"
+                alt="" /></a>
+             </div>
+            {% else %}
+            <div class="header-info__user">
+                <a href="{% url 'customerlogin' %}" class="header-info__link"><i class="far fa-user"></i></a>
+             </div>
+             {% endif %}
+         </div> 
+         <div class="header-categories d-block d-lg-none">
+            <img src="{% static 'assets/images/logo/logo1.jpeg' %}" class="rounded-circle" style="width: 30px;margin-left:10px;"alt="" />
+            <span >
+               
+                
+                <h4 style="font-weight: 900;color:white;padding-top: 10px;">Ajith Tech</h4></span>
+      </nav>
+  </div>
+</header>
+<!-- ==================== Bottom Header End Here ==================== -->
+
+ <!--========================== Search Modal Start ==========================-->
+ <div class="overlay-search-box position-relative">
+  <div class="modal fade" id="search-box" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="search-overlay-close" data-bs-dismiss="modal" aria-label="Close"><i class="las la-times"></i></button>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <div class="search-box">
+                                  <div class="input--group">
+                                      <input type="text" class="form--control style-two" placeholder="Search....">
+                                      <button class="search-btn" type="submit"><i class="las la-search"></i></button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--========================== Search Modal End ==========================-->
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.1.min.js"></script>
+
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+
+ <script src=" {% static 'assets/js/bootstrap.min.js' %}"></script>
+
+ <script src="{% static 'assets/js/slick.min.js' %}"></script> 
+
+ <script src="{% static 'assets/js/mixitup.min.js' %}"></script> 
+
+ <script src="{% static 'assets/js/jquery.knob.js' %}"></script>
+<script src="{% static 'assets/js/jquery.throttle.js' %}"></script>
+<script src="{% static 'assets/js/jquery.classycountdown.min.js' %}"></script> 
+
+<script src="{% static 'assets/js/jquery-ui.js' %}"></script> 
+<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+ <script>
+    // mixitup 
+   var mixer = mixitup('.product');
+</script> 
